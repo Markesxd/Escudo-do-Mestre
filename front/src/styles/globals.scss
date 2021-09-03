@@ -1,0 +1,16 @@
+main {
+  background: url('/cube-568059_1920.jpg');
+  height: calc(100vh - 4.125rem);
+  color: white;
+
+  .overlay{
+    background: rgba(0,0,0,0.9);
+    height: calc(100vh - 4.125rem);
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

@@ -1,0 +1,6 @@
+fonte:
+Shadows Into Light
+
+Cores:
+#2274A5, #393d3f, #35ac88, #f4ef88, #CC2936; 
+https://coolors.co/2274a5-393d3f-35ac88-f4ef88-cc2936
