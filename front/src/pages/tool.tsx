@@ -1,5 +1,5 @@
 import {useRouter} from 'next/router';
-import Batalha from '../components/batalha';
+import Menu from '../components/menu';
 
 
 export default function Tool() {
@@ -7,8 +7,8 @@ export default function Tool() {
 
   return(
       <>
-        <h2>Menu de Batalha</h2>
-        <Batalha/>
+
+        <Menu/>
       </>
   );
 }

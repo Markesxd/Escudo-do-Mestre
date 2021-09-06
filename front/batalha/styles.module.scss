@@ -5,11 +5,18 @@
   justify-content: space-between;
 
   thead{
+
     td{
       background: rgba(255,255,255,0.3);
       color: #35AC88;
       border: 1px solid white;
-      margin: 0;
+      padding: 0.2rem;
+    }
+
+    button{
+      border-radius: 100%;
+      background: #35AC88;
+      margin: 0.2rem;
     }
   }
 }

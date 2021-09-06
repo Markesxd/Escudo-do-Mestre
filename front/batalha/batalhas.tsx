@@ -1,6 +1,7 @@
 import styles from './styles.module.scss';
 
 export default function Batalha() {
+
   return(
     <table className={styles.container}>
       <thead>
@@ -11,9 +12,11 @@ export default function Batalha() {
         <td>Vida</td>
         <td>CA</td>
         <td>Info</td>
-        <td>+</td>
+        <td><button type='button' onClick={addMenu}>+</button></td>
         </tr>
       </thead>
+      <tbody ref={tbodyRef}>
+      </tbody>
     </table>
   );
 }
