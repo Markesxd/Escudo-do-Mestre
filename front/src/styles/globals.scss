@@ -6,6 +6,8 @@ main {
   .overlay{
     background: rgba(0,0,0,0.9);
     height: calc(100vh - 4.125rem);
+    overflow-y: scroll;
+
   }
 }
 

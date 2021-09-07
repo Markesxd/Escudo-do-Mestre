@@ -8,4 +8,11 @@ JogadorRouter.post('/', (req, res) => {
   .catch((reject) => res.status(400).json(reject));
 });
 
+JogadorRouter.get('/:mestre', (req, res) => {
+  const {mestre} = req.params;
+  Jogador.get(mestre)
+  .then((resolve) => res.json(resolve))
+  .catch((reject) => res.status(400).json(reject));
+})
+
 module.exports = JogadorRouter;

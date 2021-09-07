@@ -14,8 +14,8 @@ const CadastroMesa = () => {
         descricao: descricaoRef.current.value
       }
     )
-    .then((resolve) => console.log(resolve))
-    .catch((reject) => console.log(reject));
+    .then((resolve) => alert('Mesa cadastrada com sucesso'))
+    .catch((reject) => console.log('Ocoreu algum erro'));
   }
 
   return(

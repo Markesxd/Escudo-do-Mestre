@@ -14,11 +14,12 @@ class Mesa{
       })
     }
 
-    get(){
+    get(mestre){
       return new Promise((resolve, reject) => {
-        const sql = `Select * from mesas`;
+        const sql = `SELECT * FROM mesas WHERE mestre=${mestre}`;
         connection.query(sql, null, (error, results) => {
             if(error){
+              console.log(error);
               reject(error);
             } else{
               resolve(results);
