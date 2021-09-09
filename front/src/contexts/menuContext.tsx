@@ -4,22 +4,22 @@ export const MenuContext = createContext();
 
 export default function MenuContextProvider ({children}){
   const [userId, setUserId] = useState(1);
-  const [mesaId, setMesaId] = useState(-1);
+  const [mesa, setMesa] = useState(undefined);
 
   function setUser(id){
     setUserId(id);
   }
 
-  function setMesa(id){
-    setMesaId(id);
+  function setCurrentMesa(mesa){
+    setMesa(mesa);
   }
 
   return (
     <MenuContext.Provider value={{
       userId,
       setUser,
-      mesaId,
-      setMesa
+      mesa,
+      setCurrentMesa
     }}>
     {children}
     </MenuContext.Provider>

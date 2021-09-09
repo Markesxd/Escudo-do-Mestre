@@ -3,7 +3,16 @@
   padding: 1rem;
 
   .mainTitle{
+    border-radius: 20px;
+    cursor: pointer;
     display: inline;
     font-size: 30px;
+    padding: 0.5rem;
+    transition: 0.3s;
+
+    &:hover{
+      background: black;
+      color: white;
+    }
   }
 }

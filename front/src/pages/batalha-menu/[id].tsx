@@ -31,7 +31,7 @@ const BatalhaMenu = ({mesas, jogadores}) => {
         jogadores.map((jogador, i) => {
           jogadoresRefs.push(useRef());
           return (
-            <div className={styles.hidden} key={jogador.id}>
+            <div className='hidden' key={jogador.id}>
               <input ref={jogadoresRefs[i]} id={`jogador${jogador.id}`} type='checkbox' name='jogadores' value={jogador.id}/>
               <label htmlFor={`jogador${jogador.id}`}>{jogador.nomePersonagem}</label>
             </div>

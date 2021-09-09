@@ -27,6 +27,19 @@ class Mesa{
         });
       });
     }
+
+    getById(id){
+      return new Promise((resolve, reject) => {
+        const sql = `SELECT * FROM mesas WHERE id=${id}`;
+        connection.query(sql, null, (error, results) =>{
+          if(error) {
+            reject(error);
+          } else {
+            resolve(results[0]);
+          }
+        })
+      })
+    }
 }
 
 module.exports = new Mesa();
