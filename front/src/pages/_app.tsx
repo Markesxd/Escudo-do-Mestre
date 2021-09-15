@@ -1,6 +1,7 @@
 import Header from '../components/header';
 import MenuContextProvider from '../contexts/menuContext';
 import '../styles/globals.scss';
+import Menu from '../components/menu';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -10,6 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <div className='overlay'>
           <MenuContextProvider>
             <Component {...pageProps} />
+            <Menu/>
           </MenuContextProvider>
         </div>
       </main>

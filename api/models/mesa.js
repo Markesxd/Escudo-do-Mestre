@@ -40,6 +40,33 @@ class Mesa{
         })
       })
     }
+
+    delete(id){
+      return new Promise((resolve, reject) => {
+        const sql = `DELETE from mesas where id=${id}`;
+        connection.query(sql, null, (error, results) => {
+          if(error){
+            reject(error);
+          } else {
+            resolve(results);
+          }
+        });
+      })
+    }
+
+    patch(id, fields){
+      return new Promise((resolve, reject) => {
+        const sql = `UPDATE mesas set ? WHERE id=${id}`;
+        connection.query(sql, fields, (error, results) => {
+          if(error){
+            console.log(error)
+            reject(error);
+          } else{
+            resolve(results);
+          }
+        });
+      });
+    }
 }
 
 module.exports = new Mesa();

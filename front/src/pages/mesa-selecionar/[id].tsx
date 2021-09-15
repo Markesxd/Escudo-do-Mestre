@@ -6,7 +6,7 @@ const MesaSelecionar = ({mesas}) => {
   const {setCurrentMesa} = useMenu();
 
   return (
-    <div>
+    <div className="container">
       {
         mesas.map(mesa => {
           return (

@@ -21,4 +21,18 @@ MesaRouter.get('/:mestre', (req, res) => {
   .catch((reject) => res.status(418).json(reject));
 });
 
+MesaRouter.delete('/:id', (req, res) => {
+  Mesa.delete(req.params.id)
+  .then((resolve) => res.status(204).end())
+  .catch((reject) => res.status(400).json(reject));
+});
+
+MesaRouter.patch('/:id', (req, res) => {
+  const {id} = req.params;
+  const fields = req.body;
+  Mesa.patch(id, fields)
+  .then(resolve => res.json(resolve))
+  .catch(reject => res.status(400).json(reject));
+});
+
 module.exports = MesaRouter;

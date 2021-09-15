@@ -3,19 +3,21 @@ import Link from 'next/link';
 import {useMenu} from '../../contexts/menuContext.tsx';
 
 const Menu = () => {
-  const {userId} = useMenu();
+  const {userId, mesa} = useMenu();
 
   return(
     <div className={styles.container}>
       <h2>Menu</h2>
-      <Link href={`/batalha-menu/${userId}`}>
-        <button type='button'>Batalha</button>
-      </Link>
+
+      <h3>{mesa?`Mesa: '${mesa.nome}'`:"Nenhuma mesa selecionada"}</h3>
       <Link href='/mesa-menu'>
-        <button type='button'> Menu das Mesas</button>
+      <button type='button'>Mesas</button>
       </Link>
-      <Link href={`/cadastro-personagem/${userId}`}>
-        <button type='button'>Cadastrar Personagem</button>
+      <Link href={`/batalha-menu/${userId}`}>
+        <button type='button' className={mesa?'':'hidden'}>Batalha</button>
+      </Link>
+      <Link href={`/menu-personagem`}>
+        <button type='button' className={mesa?'':'hidden'}>Personagens</button>
       </Link>
     </div>
   );

@@ -42,7 +42,7 @@ const cadastroPersonagem   = ({mesas}) => {
   }
 
     return (
-      <div>
+      <div className="container">
         <h2>Cadastrar Personagem</h2>
         <h3>Nome do Jogador</h3>
         <input ref={nomeJogadorRef} type='text'/>

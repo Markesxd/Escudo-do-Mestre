@@ -1,13 +1,39 @@
 main {
   background: url('/cube-568059_1920.jpg');
-  height: calc(100vh - 4.125rem);
   color: white;
 
   .overlay{
     background: rgba(0,0,0,0.9);
     height: calc(100vh - 4.125rem);
-    overflow-y: scroll;
 
+  }
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  padding: 2.5rem 20rem;
+  float: left;
+  height: calc(100vh - 4.125rem);
+  overflow-y: scroll;
+  width: 80%;
+
+  h2{
+    text-align: center;
+  }
+
+  button{
+    margin: 0.3rem;
+  }
+
+  p{
+    text-align: justify;
+  }
+
+  img{
+    margin-top: 1rem;
+    border-radius: 1rem;
   }
 }
 

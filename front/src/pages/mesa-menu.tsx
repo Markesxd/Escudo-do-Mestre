@@ -4,10 +4,13 @@ import {useMenu} from '../contexts/menuContext.tsx';
 import {api} from './api/api.ts';
 
 const MesaMenu = () => {
-  const {userId, mesa} = useMenu();
+  const {userId, mesa, setCurrentMesa} = useMenu();
 
+  const deletaMesa = async () =>{
+    await api.delete(`/mesa/${mesa.id}`);
+    setCurrentMesa(null);
+  };
 
-  console.log('mesa: ', mesa)
   return (
     <div className='container'>
       <h2>Menu das Mesas</h2>
@@ -17,7 +20,7 @@ const MesaMenu = () => {
         <button type='button'>Cadastrar</button>
       </Link>
 
-      <button className={mesa?'':'hidden'} type='button'>Deletar</button>
+      <button className={mesa?'':'hidden'} onClick={deletaMesa} type='button'>Deletar</button>
 
       <Link href={`/mesa-editar`}>
         <button className={mesa?'':'hidden'} type='button'>Editar</button>
