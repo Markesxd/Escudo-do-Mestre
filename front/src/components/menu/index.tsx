@@ -6,7 +6,7 @@ const Menu = () => {
   const {userId, mesa} = useMenu();
 
   return(
-    <div className={styles.container}>
+    <div className={userId?styles.container:'hidden'}>
       <h2>Menu</h2>
 
       <h3>{mesa?`Mesa: '${mesa.nome}'`:"Nenhuma mesa selecionada"}</h3>

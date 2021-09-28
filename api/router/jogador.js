@@ -13,6 +13,20 @@ JogadorRouter.get('/:mestre', (req, res) => {
   Jogador.get(mestre)
   .then((resolve) => res.json(resolve))
   .catch((reject) => res.status(400).json(reject));
-})
+});
+
+JogadorRouter.get('/mesa/:mesa', (req, res) => {
+  const {mesa} = req.params;
+  Jogador.mesa(mesa)
+  .then((resolve) => res.json(resolve))
+  .catch((reject) => res.status(400).json(reject));
+});
+
+JogadorRouter.patch('/:id', (req, res) => {
+  Jogador.patch(req.params.id, req.body)
+  .then(resolve => res.json(resolve))
+  .catch(reject => res.status(400).json(reject));
+});
+
 
 module.exports = JogadorRouter;

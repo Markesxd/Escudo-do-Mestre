@@ -2,15 +2,17 @@ import Link from 'next/link';
 import {useMenu} from '../contexts/menuContext.tsx';
 
 const MenuPersonagem = () => {
-  const {mesa} = useMenu();
-  console.log(mesa);
+  const {mesa, setWhichAcao} = useMenu();
+
   return (
     <div className='container'>
       <h2>Menu de Personagens</h2>
-      <Link href={`cadastro-personagem/${mesa.id}`}>
-        <button type='button'>Cadastrar</button>
+      <Link href={`personagem/${mesa.id}`}>
+        <button type='button' onClick={()=>{setWhichAcao('Cadastrar')}}>Cadastrar</button>
       </Link>
-      <button type='button'>Editar</button>
+      <Link href={`personagem-selecionar/${mesa.id}`}>
+        <button onClick={()=>{setWhichAcao('Editar')}} type='button'>Editar</button>
+      </Link>
       <button type='button'>Deletar</button>
       <button type='button'>Mover de Mesa</button>
       <button type='button'>Copiar Para Outra Mesa</button>

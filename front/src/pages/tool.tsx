@@ -1,8 +1,10 @@
 import {useRouter} from 'next/router';
-
+import {useMenu} from '../contexts/menuContext.tsx';
 
 export default function Tool() {
-  const router = useRouter();
+  // const router = useRouter();
+  const {userId} = useMenu();
+  console.log(userId)
 
   return(
       <div className='container'>

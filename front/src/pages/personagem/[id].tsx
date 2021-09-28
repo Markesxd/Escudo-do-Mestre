@@ -13,13 +13,34 @@ const cadastroPersonagem   = ({mesas}) => {
   const inteligenciaRef = useRef();
   const sabedoriaRef = useRef();
   const carismaRef = useRef();
-  let mesasRef = [];
-  const {userId} = useMenu();
+  const {userId, mesa, acao, jogadorId} = useMenu();
 
-  async function enviar(){
-    for(const mesa of mesasRef){
-      if(mesa.current.checked){
-        console.log(userId);
+  function handler(){
+    console.log(editar, cadastrar)
+    if(acao === 'Editar') return editar();
+    if(acao === 'Cadastrar') return cadastrar();
+  }
+
+  function editar(){
+    api.patch(`/jogador/${jogadorId}`, {
+      nomeJogador: nomeJogadorRef.current.value,
+      nomePersonagem: nomePersonagemRef.current.value,
+      vida: Number(vidaRef.current.value),
+      ca: Number(caRef.current.value),
+      forca: Number(forcaRef.current.value),
+      destreza: Number(destrezaRef.current.value),
+      constituicao: Number(constituicaoRef.current.value),
+      inteligencia: Number(inteligenciaRef.current.value),
+      sabedoria: Number(sabedoriaRef.current.value),
+      carisma: Number(carismaRef.current.value),
+      mesa: mesa.id,
+      mestre: userId
+    })
+    .then((resolve) => alert('Personagem editado com sucesso'))
+    .catch((reject) => alert('algum erro aconteceu'));
+  }
+
+  async function cadastrar(){
         api.post('/jogador/', {
           nomeJogador: nomeJogadorRef.current.value,
           nomePersonagem: nomePersonagemRef.current.value,
@@ -31,19 +52,16 @@ const cadastroPersonagem   = ({mesas}) => {
           inteligencia: Number(inteligenciaRef.current.value),
           sabedoria: Number(sabedoriaRef.current.value),
           carisma: Number(carismaRef.current.value),
-          mesa: mesa.current.value,
+          mesa: mesa.id,
           mestre: userId
         })
         .then((resolve) => alert('Personagem cadastrado com sucesso'))
         .catch((reject) => alert('algum erro aconteceu'));
-
-      }
-    }
   }
 
     return (
       <div className="container">
-        <h2>Cadastrar Personagem</h2>
+        <h2>{acao} Personagem</h2>
         <h3>Nome do Jogador</h3>
         <input ref={nomeJogadorRef} type='text'/>
         <h3>Nome do Personagem</h3>
@@ -64,20 +82,7 @@ const cadastroPersonagem   = ({mesas}) => {
         <input ref={sabedoriaRef} type='number'/>
         <h3>Carisma</h3>
         <input ref={carismaRef} type='number'/>
-        <h3>Mesa</h3>
-        {
-          mesas.map((mesa, i) => {
-            mesasRef.push(useRef());
-
-            return(
-              <div key={mesa.id}>
-                <input id={mesa.id} ref={mesasRef[i]} name='group' value={mesa.id} type='radio'/>
-                <label htmlFor={mesa.id}>{mesa.nome}</label>
-              </div>
-            )
-          })
-        }
-        <button type='button' onClick={enviar}>Cadastrar</button>
+        <button type='button' onClick={handler}>{acao}</button>
       </div>
     )
   }

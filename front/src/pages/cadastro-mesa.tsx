@@ -19,7 +19,7 @@ const CadastroMesa = () => {
   }
 
   return(
-    <div>
+    <div className='container'>
       <h2>Cadastre sua Mesa</h2>
       <h3>Nome</h3>
       <input type='text' ref={nomeRef}/>

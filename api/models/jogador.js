@@ -29,6 +29,33 @@ class Jogador {
       })
     })
   }
+
+  mesa(mesa){
+    return new Promise((resolve, reject) => {
+      const sql = `SELECT * FROM jogadores WHERE mesa=${mesa}`;
+      connection.query(sql, null, (error, results) => {
+        if(error){
+          console.log(error);
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      })
+    })
+  }
+
+  patch(id, fields){
+    return new Promise((reject, resolve) => {
+      const sql = `UPDATE INTO jogadores set ? WHERE id=${id}`;
+      connection.query(sql, fields, (error, results) => {
+        if(error){
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+  }
 }
 
 module.exports = new Jogador();
