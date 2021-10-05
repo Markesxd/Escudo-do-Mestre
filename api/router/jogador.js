@@ -28,5 +28,11 @@ JogadorRouter.patch('/:id', (req, res) => {
   .catch(reject => res.status(400).json(reject));
 });
 
+JogadorRouter.delete('/:id', (req, res) => {
+  Jogador.delete(req.params.id)
+  .then(resolve => res.json(resolve))
+  .catch(reject => res.status(400).json(reject));
+});
+
 
 module.exports = JogadorRouter;

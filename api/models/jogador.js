@@ -21,7 +21,6 @@ class Jogador {
       const sql = `SELECT * FROM jogadores WHERE mestre=${mestre}`;
       connection.query(sql, null, (error, results) => {
         if(error){
-          console.log(error);
           reject(error);
         } else {
           resolve(results);
@@ -45,8 +44,8 @@ class Jogador {
   }
 
   patch(id, fields){
-    return new Promise((reject, resolve) => {
-      const sql = `UPDATE INTO jogadores set ? WHERE id=${id}`;
+    return new Promise((resolve, reject) => {
+      const sql = `UPDATE jogadores set ? WHERE id=${id}`;
       connection.query(sql, fields, (error, results) => {
         if(error){
           reject(error);
@@ -54,6 +53,19 @@ class Jogador {
           resolve(results);
         }
       });
+    });
+  }
+
+  delete(id){
+    return new Promise((resolve, reject) => {
+      const sql = `DELETE jogadores WHERE id=${id}`;
+      connection.query(sql, null, (error, results) => {
+        if(error){
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      })
     });
   }
 }

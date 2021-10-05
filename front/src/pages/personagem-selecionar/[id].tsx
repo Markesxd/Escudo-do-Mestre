@@ -4,7 +4,7 @@ import {api} from '../api/api.ts';
 
 
 const selecionaPersonagem = ({jogadores}) => {
-  const {acao, mesa, setCurrentJogador, userId} = useMenu();
+  const {acao, mesa, setCurrentJogador, userId, jogadorId} = useMenu();
 
   const renderPlayers = () => {
     if(acao === 'Editar') return jogadoresRadio();
@@ -32,17 +32,35 @@ const selecionaPersonagem = ({jogadores}) => {
   }
 
   function jogadorClick(e) {
+    if(acao === 'Deletar') {
+      const newList = [...jogadorId];
+      newList.push(e.target.value);
+      setCurrentJogador(newList);
+      return
+    }
     setCurrentJogador(e.target.value);
   }
 
+  const deletePlayer = () => {
+    console.log(jogadorId)
+  }
+
+  const handleButtons = () => {
+    if(acao === 'Deletar') return (
+      <button type='button' onClick={deletePlayer}>Deletar</button>
+    )
+    return(
+      <Link href={`../personagem/${userId}`}>
+        <button type='button'>Selecionar</button>
+      </Link>
+    )
+  }
 
   return(
     <div className='container'>
       <h2>Selecionar</h2>
       {renderPlayers()}
-      <Link href={`../personagem/${userId}`}>
-        <button type='button'>Selecionar</button>
-      </Link>
+      {handleButtons()}
     </div>
   )
 }

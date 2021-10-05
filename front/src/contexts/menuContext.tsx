@@ -4,9 +4,9 @@ export const MenuContext = createContext();
 
 export default function MenuContextProvider ({children}){
   const [userId, setUserId] = useState(1);
-  const [mesa, setMesa] = useState();
-  const [acao, setAcao] = useState();
-  const [jogadorId, setJogadorId] = useState();
+  const [mesa, setMesa] = useState({id: 5});
+  const [acao, setAcao] = useState('Deletar');
+  const [jogadorId, setJogadorId] = useState([]);
 
   function setUser(id){
     setUserId(id);

@@ -13,7 +13,9 @@ const MenuPersonagem = () => {
       <Link href={`personagem-selecionar/${mesa.id}`}>
         <button onClick={()=>{setWhichAcao('Editar')}} type='button'>Editar</button>
       </Link>
-      <button type='button'>Deletar</button>
+      <Link href={`personagem-selecionar/${mesa.id}`}>
+        <button onClick={()=>{setWhichAcao('Deletar')}} type='button'>Deletar</button>
+      </Link>
       <button type='button'>Mover de Mesa</button>
       <button type='button'>Copiar Para Outra Mesa</button>
     </div>

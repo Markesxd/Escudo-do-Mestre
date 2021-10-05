@@ -16,7 +16,6 @@ const cadastroPersonagem   = ({mesas}) => {
   const {userId, mesa, acao, jogadorId} = useMenu();
 
   function handler(){
-    console.log(editar, cadastrar)
     if(acao === 'Editar') return editar();
     if(acao === 'Cadastrar') return cadastrar();
   }
@@ -36,8 +35,8 @@ const cadastroPersonagem   = ({mesas}) => {
       mesa: mesa.id,
       mestre: userId
     })
-    .then((resolve) => alert('Personagem editado com sucesso'))
-    .catch((reject) => alert('algum erro aconteceu'));
+    .then((resolve) => {console.log(resolve); alert('Personagem editado com sucesso')})
+    .catch((reject) => {console.log(reject); alert('algum erro aconteceu')});
   }
 
   async function cadastrar(){
