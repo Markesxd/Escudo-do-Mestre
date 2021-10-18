@@ -1,6 +1,7 @@
 import {useRef} from 'react';
 import {api} from '../api/api.ts';
 import {useMenu} from '../../contexts/menuContext.tsx';
+import Link from 'next/link';
 
 const cadastroPersonagem   = ({mesas}) => {
   const nomeJogadorRef = useRef();
@@ -81,7 +82,9 @@ const cadastroPersonagem   = ({mesas}) => {
         <input ref={sabedoriaRef} type='number'/>
         <h3>Carisma</h3>
         <input ref={carismaRef} type='number'/>
-        <button type='button' onClick={handler}>{acao}</button>
+        <Link href="/menu-personagem">
+          <button type='button' onClick={handler}>{acao}</button>
+        </Link>
       </div>
     )
   }

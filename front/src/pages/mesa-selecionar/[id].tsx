@@ -3,22 +3,36 @@ import {useMenu} from '../../contexts/menuContext.tsx';
 import {api} from '../api/api.ts';
 
 const MesaSelecionar = ({mesas}) => {
-  const {setCurrentMesa} = useMenu();
+  const {setCurrentMesa, acao} = useMenu();
 
-  return (
-    <div className="container">
-      {
+  const handleButtons = () => {
+    if(acao === "Mover") {
+      return (
+        <Link href="/mesa-menu" key={mesa.id}>
+          <button type='button' onClick={() => {
+            alert('Personagem(s) movidos');
+          }}>{mesa.nome}</button>
+        </Link>
+      )
+    } else {
+      return(
         mesas.map(mesa => {
           return (
             <Link href="/mesa-menu" key={mesa.id}>
-              <button type='button' onClick={() => {
-                setCurrentMesa(mesa);
-                alert('Mesa Selecionada');
-              }}>{mesa.nome}</button>
+            <button type='button' onClick={() => {
+              setCurrentMesa(mesa);
+              alert('Mesa Selecionada');
+            }}>{mesa.nome}</button>
             </Link>
           )
         })
-      }
+      )
+    }
+  }
+
+  return (
+    <div className="container">
+      {handleButtons()}
     </div>
   )
 }

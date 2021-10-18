@@ -4,7 +4,7 @@ import {useMenu} from '../contexts/menuContext.tsx';
 import {api} from './api/api.ts';
 
 const MesaMenu = () => {
-  const {userId, mesa, setCurrentMesa} = useMenu();
+  const {userId, mesa, setCurrentMesa, setWhichAcao} = useMenu();
 
   const deletaMesa = async () =>{
     await api.delete(`/mesa/${mesa.id}`);
@@ -27,7 +27,7 @@ const MesaMenu = () => {
       </Link>
 
       <Link href={`/mesa-selecionar/${userId}`}>
-        <button type='button'>Selecionar</button>
+        <button onClick={() => {setWhichAcao("Selecionar")}} type='button'>Selecionar</button>
       </Link>
     </div>
   )

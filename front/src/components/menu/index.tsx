@@ -8,7 +8,6 @@ const Menu = () => {
   return(
     <div className={userId?styles.container:'hidden'}>
       <h2>Menu</h2>
-
       <h3>{mesa?`Mesa: '${mesa.nome}'`:"Nenhuma mesa selecionada"}</h3>
       <Link href='/mesa-menu'>
       <button type='button'>Mesas</button>

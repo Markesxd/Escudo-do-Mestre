@@ -34,7 +34,12 @@ const selecionaPersonagem = ({jogadores}) => {
   function jogadorClick(e) {
     if(acao === 'Deletar') {
       const newList = [...jogadorId];
-      newList.push(e.target.value);
+      if(e.target.checked){
+        newList.push(e.target.value);
+      } else {
+        const i = newList.indexOf(e.target.value);
+        newList.splice(i, 1);
+      }
       setCurrentJogador(newList);
       return
     }
@@ -42,16 +47,30 @@ const selecionaPersonagem = ({jogadores}) => {
   }
 
   const deletePlayer = () => {
-    console.log(jogadorId)
+    jogadorId.forEach(jogador => {
+      api.delete(`/jogador/${jogador}`)
+      .catch(error => {
+        alert("Opa Algo deu errado");
+        return
+      });
+    })
+    alert("Jogador(es) excluidos com sucesso");
   }
 
   const handleButtons = () => {
     if(acao === 'Deletar') return (
-      <button type='button' onClick={deletePlayer}>Deletar</button>
+      <Link href="/menu-personagem">
+        <button type='button' onClick={deletePlayer}>{acao}</button>
+      </Link>
+    )
+    if(acao === 'Mover') return (
+      <Link href={`/mesa-selecionar/${userId}`}>
+        <button type='button'>{acao}</button>
+      </Link>
     )
     return(
       <Link href={`../personagem/${userId}`}>
-        <button type='button'>Selecionar</button>
+        <button type='button'>{acao}</button>
       </Link>
     )
   }

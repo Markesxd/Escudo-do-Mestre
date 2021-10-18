@@ -43,7 +43,7 @@ class Mesa{
 
     delete(id){
       return new Promise((resolve, reject) => {
-        const sql = `DELETE from mesas where id=${id}`;
+        const sql = `DELETE from mesas WHERE id=${id}`;
         connection.query(sql, null, (error, results) => {
           if(error){
             reject(error);

@@ -58,9 +58,10 @@ class Jogador {
 
   delete(id){
     return new Promise((resolve, reject) => {
-      const sql = `DELETE jogadores WHERE id=${id}`;
+      const sql = `DELETE from jogadores WHERE id=${id}`;
       connection.query(sql, null, (error, results) => {
         if(error){
+          console.log(error);
           reject(error);
         } else {
           resolve(results);
