@@ -32,7 +32,7 @@ const selecionaPersonagem = ({jogadores}) => {
   }
 
   function jogadorClick(e) {
-    if(acao === 'Deletar') {
+    if(acao !== 'Editar') {
       const newList = [...jogadorId];
       if(e.target.checked){
         newList.push(e.target.value);
@@ -58,12 +58,18 @@ const selecionaPersonagem = ({jogadores}) => {
   }
 
   const handleButtons = () => {
+    console.log(acao)
     if(acao === 'Deletar') return (
       <Link href="/menu-personagem">
         <button type='button' onClick={deletePlayer}>{acao}</button>
       </Link>
     )
     if(acao === 'Mover') return (
+      <Link href={`/mesa-selecionar/${userId}`}>
+        <button type='button'>{acao}</button>
+      </Link>
+    )
+    if(acao === 'Copiar') return (
       <Link href={`/mesa-selecionar/${userId}`}>
         <button type='button'>{acao}</button>
       </Link>

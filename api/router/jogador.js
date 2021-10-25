@@ -8,6 +8,12 @@ JogadorRouter.post('/', (req, res) => {
   .catch((reject) => res.status(400).json(reject));
 });
 
+JogadorRouter.get('/:id', (req, res) => {
+  Jogador.get(req.params)
+  .then(resolve => res.json(resolve))
+  .catch(reject => res.status(400).json(reject));
+});
+
 JogadorRouter.get('/:mestre', (req, res) => {
   const {mestre} = req.params;
   Jogador.get(mestre)

@@ -3,6 +3,7 @@ const connection = require('../database/connection');
 class Jogador {
 
   add(jogador){
+    console.log(jogador)
     return new Promise((resolve, reject) => {
       const sql = `INSERT INTO jogadores SET ?`;
       connection.query(sql, jogador, (error, results) => {
@@ -16,10 +17,10 @@ class Jogador {
     });
   }
 
-  get(mestre){
+  get(param){
     return new Promise((resolve, reject) => {
-      const sql = `SELECT * FROM jogadores WHERE mestre=${mestre}`;
-      connection.query(sql, null, (error, results) => {
+      const sql = `SELECT * FROM jogadores WHERE ?`;
+      connection.query(sql, param, (error, results) => {
         if(error){
           reject(error);
         } else {
